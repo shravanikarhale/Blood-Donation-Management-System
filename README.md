@@ -1,45 +1,56 @@
 Blood Donation Management System
 
-A full-stack web application built with ASP.NET Core MVC and SQLite that connects blood donors with patients in need. Separate portals for donors and administrators to manage donations, blood requests, and donor records.
+A web-based Blood Donation Management System developed using ASP.NET Core MVC (.NET 8) and SQLite. The application bridges the gap between blood donors and patients in need by providing a structured and secure platform for managing donations and blood requests.
+
+
 
  Features
- 
-Donor Portal
-Register as a blood donor with blood type, contact info, and location
 
-Secure login with hashed password authentication
-Personal dashboard with profile summary and donation history
-Toggle availability — mark yourself as available or unavailable to donate
-Submit blood requests on behalf of patients
-Search donors by blood type and city
+ Donor Portal
+- Register as a blood donor with blood type, contact details, and city
+- Secure login with hashed password authentication
+- Personal dashboard with profile summary
+- Toggle availability status as available or unavailable
+- Submit blood requests on behalf of patients
+- Search for available donors by blood type and city
+- Update profile anytime after login
 
 Admin Portal
-Dashboard with real-time stats: total donors, pending/approved/emergency requests
-Approve, reject, or escalate blood requests to emergency
-Edit or delete donor profiles
-Reports page with blood type distribution and request status breakdown
+- Real-time dashboard with total donors, pending, approved, and emergency request stats
+- Approve, reject, or escalate blood requests to emergency
+- Edit or delete donor profiles
+- Reports page with blood type distribution across all donors
+- View all registered users
 
 Security
-Session-based authentication with role separation (Admin / User)
-Custom AuthFilter for route-level access control
-SHA-256 password hashing
-CSRF protection via anti-forgery tokens
+- Session-based authentication with role separation for Admin and User
+- Custom AuthFilter for route-level access control
+- SHA-256 password hashing
+- CSRF protection via anti-forgery tokens
 
 
 Tech Stack
-Framework: ASP.NET Core MVC (.NET 8)
-Database: SQLite via Entity Framework Core 8
-Frontend: Razor Views (CSHTML), HTML, CSS, Bootstrap
-Authentication: Session-based with custom Auth Filter
-IDE: Visual Studio 2022
+- Framework: ASP.NET Core MVC (.NET 8)
+- Database: SQLite via Entity Framework Core 8
+- Frontend: Razor Views, HTML, CSS, Bootstrap
+- Authentication: Session-based with custom Auth Filter
+- Language: C#
+- IDE: Visual Studio 2022
+
+
+
 
 
 Prerequisites
+- .NET 8 SDK
+- Visual Studio 2022 or VS Code with C# extension
 
-.NET 8 SDK — https://dotnet.microsoft.com/download/dotnet/8.0
-Visual Studio 2022 or VS Code with C# extension
 
- Project Structure
+
+
+
+Project Structure
+
 BloodDonationApp/
 ├── Controllers/
 │   ├── AccountController.cs       # Login, logout, session management
@@ -64,10 +75,3 @@ BloodDonationApp/
 
 
 
-
-🔮 Future Improvements
-
-Email notifications when a blood request is approved or matched
-Blood type compatibility matching (e.g., O- can donate to all groups)
-SMS alerts for emergency requests
-Google Maps integration to find nearby donors
