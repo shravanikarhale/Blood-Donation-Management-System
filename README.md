@@ -1,9 +1,12 @@
 Blood Donation Management System
+
 A full-stack web application built with ASP.NET Core MVC and SQLite that connects blood donors with patients in need. Separate portals for donors and administrators to manage donations, blood requests, and donor records.
+
  Features
  
 Donor Portal
 Register as a blood donor with blood type, contact info, and location
+
 Secure login with hashed password authentication
 Personal dashboard with profile summary and donation history
 Toggle availability — mark yourself as available or unavailable to donate
