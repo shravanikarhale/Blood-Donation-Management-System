@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Donora</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark border-bottom box-shadow mb-4">
+            <div class="container-fluid px-4">
+                <a class="navbar-brand text-uppercase" asp-area="" asp-controller="Home" asp-action="Index">Donora</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="About">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Contact">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-warning" asp-controller="Donor" asp-action="Register" style="color: #B5894A !important; font-weight: bold;">Register as Donor</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle btn btn-primary btn-sm px-3 text-white animate-btn" href="#" id="loginDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="border: 1.5px solid #9B3A3A !important;">
+                                Portals Login
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end shadow border-0" aria-labelledby="loginDropdown" style="background-color: #FBF7F0; border: 1px solid #E8DDD5 !important;">
+                                <li>
+                                    <a class="dropdown-item py-2 px-3 text-uppercase small fw-bold" asp-controller="Account" asp-action="UserLogin" style="color: #9B3A3A; font-family: 'Times New Roman', serif;">
+                                        Donor Portal
+                                    </a>
+                                </li>
+                                <li><hr class="dropdown-divider" style="border-color: #E8DDD5;"></li>
+                                <li>
+                                    <a class="dropdown-item py-2 px-3 text-uppercase small fw-bold" asp-controller="Account" asp-action="AdminLogin" style="color: #3D3530; font-family: 'Times New Roman', serif;">
+                                        Admin Portal
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container mb-5">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-center">
+        <div class="container">
+            &copy; 2026 - Donora Blood Management - <a asp-area="" asp-controller="Home" asp-action="Contact">Support & Contact</a>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

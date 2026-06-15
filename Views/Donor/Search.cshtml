@@ -1,0 +1,80 @@
+@model IEnumerable<BloodDonationApp.Models.Donor>
+@{
+    Layout = "_UserLayout";
+    ViewData["Title"] = "Search Donors";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-2">
+    <h1 style="font-family: 'Times New Roman', serif;">Search Blood Donors</h1>
+    <span class="badge bg-danger py-2 px-3 text-uppercase">Donor Directory</span>
+</div>
+
+<div class="card border-0 shadow-sm p-4 mb-4">
+    <form asp-action="Search" method="get">
+        <div class="row align-items-end g-3">
+            <div class="col-md-5">
+                <label class="form-label text-uppercase small fw-bold text-muted">Required Blood Type</label>
+                <select name="bloodType" class="form-control">
+                    <option value="">-- All Blood Types --</option>
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                </select>
+            </div>
+            <div class="col-md-5">
+                <label class="form-label text-uppercase small fw-bold text-muted">Filter by City</label>
+                <input type="text" name="city" class="form-control" placeholder="e.g. New York" />
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-primary w-100 py-2 text-uppercase">Search</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="card border-0 shadow-sm p-4">
+    <h3 style="font-family: 'Times New Roman', serif;" class="mb-4 text-dark">Available Donors Matching Search</h3>
+    <div class="table-responsive">
+        <table class="table table-hover align-middle">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Blood Type</th>
+                    <th>City Location</th>
+                    <th>Contact Phone</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Any())
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td><strong>@item.Name</strong></td>
+                            <td><span class="badge bg-danger fs-6">@item.BloodType</span></td>
+                            <td>@item.City</td>
+                            <td><code>@item.Phone</code></td>
+                            <td>
+                                <span class="badge bg-success text-uppercase">Available</span>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="5" class="text-center text-muted py-4">
+                            No active, available donors found matching the query. Try broadening your criteria.
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

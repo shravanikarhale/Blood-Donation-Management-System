@@ -1,0 +1,43 @@
+@{
+    ViewData["Title"] = "Admin Login - Donora";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card shadow-md border-0">
+                <div class="card-header text-center py-4">
+                    <h2 class="mb-0">D O N O R A</h2>
+                    <small class="text-uppercase" style="color: #E67E22; letter-spacing: 1px;">Admin Portal</small>
+                </div>
+                <div class="card-body p-4">
+                    <h4 class="text-center mb-4" style="font-family: 'Times New Roman', serif; font-style: italic;">Sign In as Administrator</h4>
+                    
+                    <form asp-action="AdminLogin" method="post">
+                        @Html.AntiForgeryToken()
+                        
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <div class="form-group mb-3">
+                            <label class="control-label text-uppercase small fw-bold" style="color: #C0392B; letter-spacing: 1px;">Email Address</label>
+                            <input name="email" class="form-control" type="email" placeholder="admin@blood.org" required />
+                        </div>
+                        
+                        <div class="form-group mb-4">
+                            <label class="control-label text-uppercase small fw-bold" style="color: #C0392B; letter-spacing: 1px;">Password</label>
+                            <input name="password" class="form-control" type="password" placeholder="••••••••" required />
+                        </div>
+                        
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary w-100 py-2">Enter Portal</button>
+                        </div>
+                    </form>
+                    
+                    <div class="mt-4 text-center">
+                        <a href="/" class="small" style="color: #E67E22; text-decoration: none;">&larr; Back to Landing Page</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

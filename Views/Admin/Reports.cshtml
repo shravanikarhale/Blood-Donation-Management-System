@@ -1,0 +1,76 @@
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Platform Reports";
+    var stats = ViewBag.BloodTypeStats as Dictionary<string, int> ?? new Dictionary<string, int>();
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-2">
+    <h1 style="font-family: 'Times New Roman', serif;">Platform Activity Reports</h1>
+    <span class="badge bg-secondary py-2 px-3 text-uppercase">Admin Metrics</span>
+</div>
+
+<div class="row mb-4">
+    <div class="col-md-6 mb-4">
+        <div class="card border-0 shadow-sm p-4 h-100">
+            <h3 style="font-family: 'Times New Roman', serif;" class="mb-4">Donor Supply Status</h3>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Total Registered Donors
+                    <span class="badge bg-primary rounded-pill">@ViewBag.TotalDonors</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Active & Available Donors
+                    <span class="badge bg-success rounded-pill">@ViewBag.AvailableDonors</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Offline / Unavailable Donors
+                    <span class="badge bg-secondary rounded-pill">@(ViewBag.TotalDonors - ViewBag.AvailableDonors)</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="col-md-6 mb-4">
+        <div class="card border-0 shadow-sm p-4 h-100">
+            <h3 style="font-family: 'Times New Roman', serif;" class="mb-4">Request Statistics</h3>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Total Requests Filed
+                    <span class="badge bg-dark rounded-pill">@ViewBag.TotalRequests</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Emergency Priority Requests
+                    <span class="badge bg-danger rounded-pill">@ViewBag.EmergencyRequests</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Pending Processing
+                    <span class="badge bg-warning rounded-pill">@ViewBag.PendingRequests</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Approved / Handled
+                    <span class="badge bg-success rounded-pill">@ViewBag.ApprovedRequests</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Rejected
+                    <span class="badge bg-secondary rounded-pill">@ViewBag.RejectedRequests</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="card border-0 shadow-sm p-4">
+    <h3 style="font-family: 'Times New Roman', serif;" class="mb-4">Inventory & Distribution by Blood Type</h3>
+    <div class="row">
+        @foreach (var type in new[] { "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-" })
+        {
+            var count = stats.ContainsKey(type) ? stats[type] : 0;
+            <div class="col-md-3 col-sm-6 mb-3">
+                <div class="p-3 border rounded text-center" style="background-color: #FDF6EC;">
+                    <h4 class="mb-1 text-danger fw-bold">@type</h4>
+                    <span class="text-muted">@count Donors Registered</span>
+                </div>
+            </div>
+        }
+    </div>
+</div>

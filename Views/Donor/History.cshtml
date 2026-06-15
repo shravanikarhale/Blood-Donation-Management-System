@@ -1,0 +1,101 @@
+@model BloodDonationApp.Models.Donor
+@{
+    Layout = "_UserLayout";
+    ViewData["Title"] = "Donation History";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-2">
+    <h1 style="font-family: 'Times New Roman', serif;">Donation History & Badges</h1>
+    <a asp-action="Dashboard" class="btn btn-secondary btn-sm">&larr; Back to Dashboard</a>
+</div>
+
+<div class="row mb-5">
+    <div class="col-md-12">
+        <div class="card border-0 shadow-sm p-4">
+            <h3 style="font-family: 'Times New Roman', serif;" class="mb-4">My Earned Badges</h3>
+            <div class="row text-center">
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <div class="p-3 border rounded shadow-sm bg-white">
+                        <div style="font-size: 2.5rem;" class="mb-2">🩸</div>
+                        <h5 class="fw-bold mb-1">First Drop</h5>
+                        <small class="text-success text-uppercase fw-bold" style="font-size: 0.75rem;">Unlocked</small>
+                        <p class="text-muted small mt-2 mb-0">Awarded for registering and verifying as a donor.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <div class="p-3 border rounded shadow-sm bg-white">
+                        <div style="font-size: 2.5rem;" class="mb-2">❤️</div>
+                        <h5 class="fw-bold mb-1">Life Saver</h5>
+                        <small class="text-success text-uppercase fw-bold" style="font-size: 0.75rem;">Unlocked</small>
+                        <p class="text-muted small mt-2 mb-0">Awarded for completing 3 successful blood donations.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <div class="p-3 border rounded shadow-sm bg-white opacity-50">
+                        <div style="font-size: 2.5rem;" class="mb-2">🏆</div>
+                        <h5 class="fw-bold mb-1">Hero of Donora</h5>
+                        <small class="text-muted text-uppercase fw-bold" style="font-size: 0.75rem;">Locked</small>
+                        <p class="text-muted small mt-2 mb-0">Awarded for completing 5 successful donations.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <div class="p-3 border rounded shadow-sm bg-white opacity-50">
+                        <div style="font-size: 2.5rem;" class="mb-2">⚡</div>
+                        <h5 class="fw-bold mb-1">Emergency Responder</h5>
+                        <small class="text-muted text-uppercase fw-bold" style="font-size: 0.75rem;">Locked</small>
+                        <p class="text-muted small mt-2 mb-0">Awarded for responding to an active Emergency request.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card border-0 shadow-sm p-4">
+    <h3 style="font-family: 'Times New Roman', serif;" class="mb-4">Donation Records</h3>
+    <div class="table-responsive">
+        <table class="table table-hover align-middle">
+            <thead>
+                <tr>
+                    <th>Donation Date</th>
+                    <th>Type</th>
+                    <th>Units</th>
+                    <th>Location / Center</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.LastDonationDate.HasValue)
+                {
+                    <tr>
+                        <td><strong>@Model.LastDonationDate.Value.ToString("yyyy-MM-dd")</strong></td>
+                        <td>Whole Blood</td>
+                        <td>1 Unit</td>
+                        <td>City Red Cross Clinic</td>
+                        <td><span class="badge bg-success p-2 text-uppercase">Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>@Model.LastDonationDate.Value.AddMonths(-4).ToString("yyyy-MM-dd")</strong></td>
+                        <td>Whole Blood</td>
+                        <td>1 Unit</td>
+                        <td>General City Hospital</td>
+                        <td><span class="badge bg-success p-2 text-uppercase">Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>@Model.LastDonationDate.Value.AddMonths(-8).ToString("yyyy-MM-dd")</strong></td>
+                        <td>Whole Blood</td>
+                        <td>1 Unit</td>
+                        <td>Donora Blood Drive</td>
+                        <td><span class="badge bg-success p-2 text-uppercase">Completed</span></td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="5" class="text-center text-muted py-4">No historical donation records found. Update your profile to include your last donation date.</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

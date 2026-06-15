@@ -1,0 +1,38 @@
+@{
+    ViewData["Title"] = "Contact Us";
+}
+
+<div class="container mt-5">
+    <h1>Contact Us</h1>
+    <p>Have questions or need assistance? Get in touch with us.</p>
+
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <form>
+                <div class="mb-3">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-control" placeholder="Enter your name">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-control" placeholder="Enter your email">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Message</label>
+                    <textarea class="form-control" rows="5" placeholder="Your message here"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" onclick="alert('Message sent! We will contact you soon.'); return false;">Send Message</button>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <h3>Our Office</h3>
+            <p><strong>Address:</strong> 123 Health Street, Medical City, 54321</p>
+            <p><strong>Phone:</strong> +1 (555) 123-4567</p>
+            <p><strong>Email:</strong> support@blooddonation.org</p>
+            
+            <h3 class="mt-4">Emergency Support</h3>
+            <p>For urgent blood requests, please call our 24/7 hotline:</p>
+            <h4 class="text-danger">1-800-BLOOD-HELP</h4>
+        </div>
+    </div>
+</div>

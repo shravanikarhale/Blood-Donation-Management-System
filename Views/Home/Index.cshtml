@@ -1,0 +1,53 @@
+@{
+    ViewData["Title"] = "Welcome to Donora";
+}
+
+<div class="row align-items-center py-5 my-5">
+    <div class="col-lg-6 text-center text-lg-start">
+        <h1 class="display-3 fw-bold mb-3" style="font-family: 'Times New Roman', serif; font-size: 4rem;">D O N O R A</h1>
+        <p class="lead mb-4 text-muted" style="font-size: 1.25rem;">
+            A bespoke, luxury platform engineered to connect altruistic blood donors with critical healthcare needs. Bridging the gap, saving lives, preserving communities.
+        </p>
+        <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-3">
+            <a asp-controller="Donor" asp-action="Register" class="btn btn-primary btn-lg text-uppercase px-4">Register as Donor</a>
+            <a asp-controller="Home" asp-action="About" class="btn btn-secondary btn-lg text-uppercase px-4">Learn More</a>
+        </div>
+    </div>
+    <div class="col-lg-6 mt-5 mt-lg-0">
+        <div class="row g-4">
+            <!-- Donor Portal Access -->
+            <div class="col-sm-6">
+                <div class="card p-4 text-center h-100">
+                    <div style="font-size: 3rem;" class="mb-3">🩸</div>
+                    <h3 style="font-family: 'Times New Roman', serif;">Donor Portal</h3>
+                    <p class="text-muted small" style="color: #8C7B75 !important;">Update donation availability, view history, and edit your profile.</p>
+                    <a asp-controller="Account" asp-action="UserLogin" class="btn btn-outline-dark btn-sm text-uppercase mt-auto">Enter Portal</a>
+                </div>
+            </div>
+            <!-- Admin Portal Access -->
+            <div class="col-sm-6">
+                <div class="card p-4 text-center h-100">
+                    <div style="font-size: 3rem;" class="mb-3">🔒</div>
+                    <h3 style="font-family: 'Times New Roman', serif;">Admin Portal</h3>
+                    <p class="text-muted small" style="color: #8C7B75 !important;">Manage requests, view system statistics, and review donor accounts.</p>
+                    <a asp-controller="Account" asp-action="AdminLogin" class="btn btn-outline-dark btn-sm text-uppercase mt-auto">Enter Portal</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5 pt-5 border-top">
+    <div class="col-md-4 text-center mb-4">
+        <h4 style="font-family: 'Times New Roman', serif;" class="mb-2">1. Register</h4>
+        <p class="text-muted small">Join Donora as a verified blood donor in under two minutes.</p>
+    </div>
+    <div class="col-md-4 text-center mb-4">
+        <h4 style="font-family: 'Times New Roman', serif;" class="mb-2">2. Match</h4>
+        <p class="text-muted small">Hospitals and patients search for matches based on blood type and city.</p>
+    </div>
+    <div class="col-md-4 text-center mb-4">
+        <h4 style="font-family: 'Times New Roman', serif;" class="mb-2">3. Save Lives</h4>
+        <p class="text-muted small">Deliver critical care where and when it's needed most.</p>
+    </div>
+</div>

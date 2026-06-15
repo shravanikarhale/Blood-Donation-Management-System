@@ -1,0 +1,113 @@
+@using BloodDonationApp.Controllers
+@model AdminDashboardViewModel
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 style="font-family: 'Times New Roman', serif;">Dashboard Overview</h1>
+    <span class="badge bg-secondary py-2 px-3 text-uppercase">Admin Access Granted</span>
+</div>
+
+<!-- Stats Row -->
+<div class="row mb-5">
+    <div class="col-md-3 mb-3">
+        <div class="card bg-white border-0 shadow-sm text-center p-3 h-100">
+            <h6 class="text-uppercase small fw-bold text-muted mb-2">Emergency Cases</h6>
+            <h2 class="text-danger mb-0" style="font-family: 'Times New Roman', serif; font-weight: bold;">@ViewBag.EmergencyCount</h2>
+            <small class="text-muted mt-2">Active Emergency Requests</small>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="card bg-white border-0 shadow-sm text-center p-3 h-100">
+            <h6 class="text-uppercase small fw-bold text-muted mb-2">Pending Requests</h6>
+            <h2 class="text-warning mb-0" style="font-family: 'Times New Roman', serif; font-weight: bold;">@ViewBag.PendingCount</h2>
+            <small class="text-muted mt-2">Awaiting Review</small>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="card bg-white border-0 shadow-sm text-center p-3 h-100">
+            <h6 class="text-uppercase small fw-bold text-muted mb-2">Approved Requests</h6>
+            <h2 class="text-success mb-0" style="font-family: 'Times New Roman', serif; font-weight: bold;">@ViewBag.ApprovedCount</h2>
+            <small class="text-muted mt-2">Approved or Completed</small>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="card bg-white border-0 shadow-sm text-center p-3 h-100">
+            <h6 class="text-uppercase small fw-bold text-muted mb-2">Total Donors</h6>
+            <h2 class="text-primary mb-0" style="font-family: 'Times New Roman', serif; font-weight: bold;">@ViewBag.TotalDonors</h2>
+            <small class="text-muted mt-2">Registered in Donora</small>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Recent Donors -->
+    <div class="col-md-6 mb-4">
+        <div class="card border-0 shadow-sm p-4 h-100">
+            <h3 style="font-family: 'Times New Roman', serif;" class="mb-4 text-dark border-bottom pb-2">Recent Registered Donors</h3>
+            <div class="table-responsive">
+                <table class="table table-hover table-sm">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Blood Type</th>
+                            <th>City</th>
+                            <th>Availability</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var donor in Model.Donors) {
+                            <tr>
+                                <td><strong>@donor.Name</strong></td>
+                                <td><span class="badge bg-danger">@donor.BloodType</span></td>
+                                <td>@donor.City</td>
+                                <td>@(donor.IsAvailable ? "Available" : "Not Available")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="mt-auto pt-3">
+                <a asp-action="ManageDonors" class="btn btn-secondary btn-sm w-100 text-uppercase">Manage Donors</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Blood Requests -->
+    <div class="col-md-6 mb-4">
+        <div class="card border-0 shadow-sm p-4 h-100">
+            <h3 style="font-family: 'Times New Roman', serif;" class="mb-4 text-dark border-bottom pb-2">Recent Blood Requests</h3>
+            <div class="table-responsive">
+                <table class="table table-hover table-sm">
+                    <thead>
+                        <tr>
+                            <th>Patient</th>
+                            <th>Blood Type</th>
+                            <th>Hospital</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var request in Model.Requests) {
+                            <tr>
+                                <td><strong>@request.PatientName</strong></td>
+                                <td><span class="badge bg-outline bg-secondary">@request.BloodType</span></td>
+                                <td>@request.Hospital</td>
+                                <td>
+                                    <span class="badge @(request.Status == "Emergency" ? "bg-danger" : request.Status == "Approved" ? "bg-success" : "bg-warning")">
+                                        @request.Status
+                                    </span>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="mt-auto pt-3">
+                <a asp-action="BloodRequests" class="btn btn-secondary btn-sm w-100 text-uppercase">View All Requests</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,117 @@
+@model BloodDonationApp.Models.Donor
+@{
+    Layout = "_UserLayout";
+    ViewData["Title"] = "Donor Dashboard";
+
+    // Calculate days since last donation & next eligibility
+    var lastDonationText = Model.LastDonationDate?.ToString("yyyy-MM-dd") ?? "None recorded";
+    var nextEligible = "Eligible now!";
+    var isEligible = true;
+
+    if (Model.LastDonationDate.HasValue)
+    {
+        var nextDate = Model.LastDonationDate.Value.AddDays(56);
+        if (nextDate > DateTime.Now)
+        {
+            nextEligible = nextDate.ToString("yyyy-MM-dd");
+            isEligible = false;
+        }
+    }
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-2">
+    <h1 style="font-family: 'Times New Roman', serif;">Donor Dashboard</h1>
+    <span class="badge bg-danger py-2 px-3 text-uppercase">Donor Portal</span>
+</div>
+
+<!-- Welcome Section -->
+<div class="card border-0 shadow-sm p-4 mb-4 bg-white">
+    <div class="row align-items-center">
+        <div class="col-md-8">
+            <h2 style="font-family: 'Times New Roman', serif; font-style: italic;" class="mb-2">Welcome back, @Model.Name!</h2>
+            <p class="text-muted mb-0">Thank you for being part of the Donora community. Your contributions save lives every day.</p>
+        </div>
+        <div class="col-md-4 text-md-end mt-3 mt-md-0">
+            <a asp-action="Donate" class="btn btn-primary text-uppercase px-4">Toggle Availability</a>
+        </div>
+    </div>
+</div>
+
+<!-- Stats Row -->
+<div class="row mb-4">
+    <!-- Blood Type -->
+    <div class="col-md-3 mb-3">
+        <div class="card bg-white border-0 shadow-sm text-center p-3 h-100">
+            <h6 class="text-uppercase small fw-bold text-muted mb-2">My Blood Group</h6>
+            <h2 class="text-danger mb-0" style="font-family: 'Times New Roman', serif; font-weight: bold;">@Model.BloodType</h2>
+            <small class="text-muted mt-2">Required for matching</small>
+        </div>
+    </div>
+    
+    <!-- Status -->
+    <div class="col-md-3 mb-3">
+        <div class="card bg-white border-0 shadow-sm text-center p-3 h-100">
+            <h6 class="text-uppercase small fw-bold text-muted mb-2">Donation Status</h6>
+            <h2 class="mb-0 @(Model.IsAvailable ? "text-success" : "text-warning")" style="font-family: 'Times New Roman', serif; font-weight: bold;">
+                @(Model.IsAvailable ? "Active" : "Busy")
+            </h2>
+            <small class="text-muted mt-2">@(Model.IsAvailable ? "Visible in search" : "Hidden in search")</small>
+        </div>
+    </div>
+
+    <!-- Total Donations -->
+    <div class="col-md-3 mb-3">
+        <div class="card bg-white border-0 shadow-sm text-center p-3 h-100">
+            <h6 class="text-uppercase small fw-bold text-muted mb-2">Total Donations</h6>
+            <h2 class="text-primary mb-0" style="font-family: 'Times New Roman', serif; font-weight: bold;">3</h2>
+            <small class="text-muted mt-2">Milestone: <strong>Life Saver</strong></small>
+        </div>
+    </div>
+
+    <!-- Eligibility -->
+    <div class="col-md-3 mb-3">
+        <div class="card bg-white border-0 shadow-sm text-center p-3 h-100">
+            <h6 class="text-uppercase small fw-bold text-muted mb-2">Next Eligibility Date</h6>
+            <h4 class="mb-0 @(isEligible ? "text-success" : "text-muted")" style="font-family: 'Times New Roman', serif; font-weight: bold; font-size: 1.25rem; margin-top: 5px;">
+                @nextEligible
+            </h4>
+            <small class="text-muted mt-2">Last: @lastDonationText</small>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Quick Actions -->
+    <div class="col-md-6 mb-4">
+        <div class="card border-0 shadow-sm p-4 h-100 bg-white">
+            <h3 style="font-family: 'Times New Roman', serif;" class="mb-3 border-bottom pb-2">Quick Actions</h3>
+            <div class="d-grid gap-2">
+                <a asp-action="Profile" class="btn btn-outline-dark text-start p-3 text-uppercase small font-monospace">
+                    &rarr; Edit My Profile Details
+                </a>
+                <a asp-controller="BloodRequest" asp-action="Create" class="btn btn-outline-dark text-start p-3 text-uppercase small font-monospace">
+                    &rarr; Submit a Blood Request
+                </a>
+                <a asp-action="Search" class="btn btn-outline-dark text-start p-3 text-uppercase small font-monospace">
+                    &rarr; Search Active Donors
+                </a>
+                <a asp-action="History" class="btn btn-outline-dark text-start p-3 text-uppercase small font-monospace">
+                    &rarr; View Donation Badges & History
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Donation Guidelines -->
+    <div class="col-md-6 mb-4">
+        <div class="card border-0 shadow-sm p-4 h-100 bg-white">
+            <h3 style="font-family: 'Times New Roman', serif;" class="mb-3 border-bottom pb-2">Donation Guidelines</h3>
+            <ul class="text-muted small">
+                <li class="mb-2">Ensure you are well-hydrated and have had a healthy meal before donating.</li>
+                <li class="mb-2">You must weigh at least 110 lbs (50 kg) and be in good general health.</li>
+                <li class="mb-2">A minimum interval of 56 days is required between whole blood donations.</li>
+                <li class="mb-2">Bring a valid government-issued photo ID to the donation clinic.</li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,372 @@
+/* site.css - Custom Luxury Editorial Warm Theme for Donora */
+
+body {
+    font-family: Georgia, serif;
+    background-color: #FBF7F0; /* Soft warm white */
+    color: #3A3230; /* Warm near-black */
+    margin: 0;
+    padding: 0;
+}
+
+/* Luxury Editorial Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Times New Roman', Times, Baskerville, serif;
+    color: #5C1A1A; /* Deep warm burgundy */
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Header & Navigation */
+.navbar {
+    background-color: #7D2B2B !important; /* Muted deep burgundy */
+    box-shadow: 0 4px 15px rgba(125, 43, 43, 0.15);
+    border-bottom: 3px solid #B5894A; /* Muted warm gold border */
+}
+
+.navbar-brand {
+    font-family: 'Times New Roman', serif;
+    font-weight: bold;
+    font-size: 1.6rem;
+    color: #F5ECD7 !important; /* Warm ivory */
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.25s ease;
+}
+
+.navbar-brand:hover {
+    color: #B5894A !important;
+}
+
+.navbar-nav .nav-link {
+    color: #F5ECD7 !important;
+    font-family: 'Times New Roman', serif;
+    text-transform: uppercase;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    margin: 0 8px;
+    position: relative;
+    padding-bottom: 4px;
+    transition: all 0.25s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #B5894A !important;
+}
+
+/* Underline slide-in animation on hover for navbar links */
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #B5894A; /* Warm gold */
+    transform-origin: bottom right;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar-nav .nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* Sidebar Wrapper Layout */
+#wrapper {
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+#sidebar-wrapper {
+    min-height: 100vh;
+    width: 260px;
+    margin-left: 0;
+    transition: margin 0.25s ease-out;
+    background-color: #3D3530; /* Warm dark brown */
+    border-right: 3px solid #7D2B2B;
+    display: flex;
+    flex-direction: column;
+}
+
+#sidebar-wrapper .sidebar-heading {
+    border-bottom: 1px solid rgba(245, 236, 215, 0.1);
+    background-color: #2D2520;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.sidebar-nav .list-group-item {
+    background-color: transparent !important;
+    border: none !important;
+    color: #F5ECD7 !important;
+    padding: 15px 25px;
+    font-family: 'Times New Roman', serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+    transition: all 0.25s ease;
+}
+
+.sidebar-nav .list-group-item:hover {
+    background-color: rgba(125, 43, 43, 0.2) !important;
+    color: #B5894A !important;
+    padding-left: 32px;
+}
+
+.text-gold {
+    color: #B5894A !important;
+}
+
+.bg-dark-danger {
+    background-color: #9B3A3A !important;
+    color: #F5ECD7 !important;
+}
+
+.bg-dark-danger:hover {
+    background-color: #7A2B2B !important;
+    color: #FFFFFF !important;
+}
+
+#page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+    background-color: #FBF7F0;
+}
+
+#page-content-wrapper nav.navbar {
+    background-color: #3D3530 !important;
+    border-bottom: 3px solid #7D2B2B;
+}
+
+/* Luxury Editorial Cards */
+.card {
+    background-color: #FFFFFF; /* Sleek white */
+    border: 1px solid #E8DDD5; /* Warm light border */
+    border-radius: 4px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+    border-color: #B5894A;
+}
+
+.card-header {
+    background-color: #7D2B2B !important;
+    color: #F5ECD7 !important;
+    border-bottom: 2px solid #B5894A;
+    font-family: 'Times New Roman', serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+}
+
+/* Buttons with premium styling & animations */
+.btn {
+    font-family: 'Times New Roman', serif;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    border-radius: 2px;
+    padding: 8px 20px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+    filter: brightness(1.08);
+}
+
+.btn:active {
+    transform: translateY(0px) scale(0.97);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.btn-primary {
+    background-color: #9B3A3A !important;
+    border: 1.5px solid #9B3A3A !important;
+    color: #F5ECD7 !important;
+}
+
+.btn-primary:hover {
+    background-color: #7A2B2B !important;
+    border-color: #7A2B2B !important;
+    color: #FFFFFF !important;
+}
+
+.btn-secondary {
+    background-color: #3D3530 !important;
+    border: 1.5px solid #3D3530 !important;
+    color: #F5ECD7 !important;
+}
+
+.btn-secondary:hover {
+    background-color: #5A4F48 !important;
+    border-color: #5A4F48 !important;
+    color: #FFFFFF !important;
+}
+
+.btn-outline-dark {
+    color: #3D3530 !important;
+    border: 1.5px solid #3D3530 !important;
+    background-color: transparent !important;
+}
+
+.btn-outline-dark:hover {
+    background-color: #3D3530 !important;
+    color: #F5ECD7 !important;
+}
+
+.btn-outline-light {
+    color: #F5ECD7 !important;
+    border: 1.5px solid #F5ECD7 !important;
+    background-color: transparent !important;
+}
+
+.btn-outline-light:hover {
+    background-color: #F5ECD7 !important;
+    color: #3D3530 !important;
+}
+
+/* Button Ripple Effect */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.45);
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0);
+    animation: ripple-animation 0.6s ease-out;
+}
+
+@keyframes ripple-animation {
+    to {
+        transform: translate(-50%, -50%) scale(2.5);
+        opacity: 0;
+    }
+}
+
+/* Form Controls */
+.form-control {
+    background-color: #FFFFFF;
+    border: 1px solid #E8DDD5;
+    border-radius: 2px;
+    font-family: Georgia, serif;
+    color: #3A3230;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    background-color: #FFFFFF;
+    border-color: #B5894A;
+    box-shadow: 0 0 0 0.25rem rgba(181, 137, 74, 0.15);
+    color: #3A3230;
+}
+
+/* Table Style Overrides */
+.table {
+    background-color: #FFFFFF;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 4px;
+    overflow: hidden;
+    font-family: Georgia, serif;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+}
+
+.table th {
+    background-color: #7D2B2B !important;
+    color: #F5ECD7 !important;
+    border-bottom: 2px solid #B5894A !important;
+    text-transform: uppercase;
+    font-family: 'Times New Roman', serif;
+    font-weight: bold;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    padding: 12px 15px;
+}
+
+.table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #E8DDD5;
+}
+
+/* Badges */
+.badge {
+    border-radius: 2px;
+    font-family: 'Times New Roman', serif;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.bg-danger {
+    background-color: #9B3A3A !important;
+}
+
+.bg-warning {
+    background-color: #B5894A !important;
+    color: #FFFFFF !important;
+}
+
+.bg-success {
+    background-color: #2E7D32 !important;
+}
+
+.bg-secondary {
+    background-color: #8C7B75 !important;
+}
+
+/* Footer Details */
+.footer {
+    background-color: #3D3530;
+    border-top: 3px solid #7D2B2B;
+    color: #8C7B75 !important;
+    padding: 20px 0;
+    font-family: 'Times New Roman', serif;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
+.footer a {
+    color: #B5894A !important;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: #F5ECD7 !important;
+}
+
+/* Custom CSS for timeline step numbers */
+.step-number {
+    width: 40px;
+    height: 40px;
+    background-color: #9B3A3A;
+    color: #FFFFFF;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.15rem;
+    font-family: 'Times New Roman', serif;
+    box-shadow: 0 2px 8px rgba(155, 58, 58, 0.3);
+}
+
+.step-card {
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.step-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.08) !important;
+}

@@ -1,0 +1,38 @@
+@model IEnumerable<BloodDonationApp.Models.BloodRequest>
+
+@{
+    ViewData["Title"] = "Blood Requests";
+}
+
+<h1>Current Blood Requests</h1>
+
+<table class="table table-bordered mt-4">
+    <thead class="table-light">
+        <tr>
+            <th>Patient Name</th>
+            <th>Blood Type</th>
+            <th>Units</th>
+            <th>Hospital</th>
+            <th>City</th>
+            <th>Required Date</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) {
+            <tr>
+                <td>@item.PatientName</td>
+                <td>@item.BloodType</td>
+                <td>@item.Units</td>
+                <td>@item.Hospital</td>
+                <td>@item.City</td>
+                <td>@item.RequiredDate.ToShortDateString()</td>
+                <td>
+                    <span class="badge @(item.Status == "Pending" ? "bg-warning" : "bg-success")">
+                        @item.Status
+                    </span>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

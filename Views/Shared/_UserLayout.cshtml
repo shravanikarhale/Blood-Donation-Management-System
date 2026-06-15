@@ -1,0 +1,83 @@
+@{
+    var userName = HttpContextAccessor.HttpContext?.Session.GetString("UserName") ?? "Donor";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Donora Donor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar -->
+        <div class="bg-dark-editorial border-right" id="sidebar-wrapper">
+            <div class="sidebar-heading text-center py-4">
+                <h3 class="mb-0 text-gold text-uppercase" style="letter-spacing: 2px;">Donora</h3>
+                <small class="text-muted text-uppercase" style="color: #8C7B75 !important;">Donor Portal</small>
+            </div>
+            <div class="list-group list-group-flush sidebar-nav">
+                <a asp-controller="Donor" asp-action="Dashboard" class="list-group-item list-group-item-action text-white">
+                    Dashboard
+                </a>
+                <a asp-controller="Donor" asp-action="Profile" class="list-group-item list-group-item-action text-white">
+                    My Profile
+                </a>
+                <a asp-controller="Donor" asp-action="Donate" class="list-group-item list-group-item-action text-white">
+                    Donate Blood
+                </a>
+                <a asp-controller="BloodRequest" asp-action="Create" class="list-group-item list-group-item-action text-white">
+                    Request Blood
+                </a>
+                <a asp-controller="Donor" asp-action="Search" class="list-group-item list-group-item-action text-white">
+                    Search Donor
+                </a>
+                <a asp-controller="Donor" asp-action="History" class="list-group-item list-group-item-action text-white">
+                    Donation History
+                </a>
+                <a asp-controller="Account" asp-action="Logout" class="list-group-item list-group-item-action text-white mt-auto bg-dark-danger">
+                    Logout
+                </a>
+            </div>
+        </div>
+        <!-- Page Content -->
+        <div id="page-content-wrapper" class="w-100">
+            <nav class="navbar navbar-expand-lg navbar-dark border-bottom py-3">
+                <div class="container-fluid px-4">
+                    <span class="navbar-text text-white">
+                        Welcome, <strong>@userName</strong> (Donor)
+                    </span>
+                    <div class="ms-auto">
+                        <a asp-controller="Account" asp-action="Logout" class="btn btn-outline-light btn-sm text-uppercase">Logout</a>
+                    </div>
+                </div>
+            </nav>
+            <div class="container-fluid p-4">
+                @if (TempData["SuccessMessage"] != null)
+                {
+                    <div class="alert alert-success alert-dismissible fade show mb-4" role="alert">
+                        @TempData["SuccessMessage"]
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                }
+                @if (TempData["ErrorMessage"] != null)
+                {
+                    <div class="alert alert-danger alert-dismissible fade show mb-4" role="alert">
+                        @TempData["ErrorMessage"]
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                }
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
